@@ -1,0 +1,35 @@
+---
+import "./services.css";
+import ServicesCards from '../servicescards/servicescards.astro';
+---
+
+<section class="servicios">
+  <div class="contenido">
+    <h2 class="titulo-principal">Servicios de <span class="resaltado">Excelencia Digital</span></h2>
+    <p class="subtitulo">Soluciones integrales inspiradas en la perfección del Olimpo</p>
+    <div class="punto"></div>
+
+    <div class="cards-container">
+      <ServicesCards 
+        title="Diseño Excepcional"
+        category="Interfaz & Estilo"
+        description="Porque todo proyecto necesita una interfaz atractiva y moderna. Esto refleja profesionalismo y calidad visual."
+        image="/images/servicios/diseno.jpg"
+      />
+
+      <ServicesCards 
+        title="SEO Estratégico"
+        category="Posicionamiento Web"
+        description="Porque los clientes quieren que su web sea encontrada y genere tráfico. Esto vende resultados concretos y medibles."
+        image="/images/servicios/seo.jpg"
+      />
+
+      <ServicesCards 
+        title="Performance Superior"
+        category="Optimización Técnica"
+        description="Porque la velocidad y el buen funcionamiento son clave para retener usuarios y mejorar la experiencia."
+        image="/images/servicios/performance.jpg"
+      />
+    </div>
+  </div>
+</section>

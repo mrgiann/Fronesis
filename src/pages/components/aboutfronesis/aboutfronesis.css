@@ -1,0 +1,85 @@
+.fronesis {
+  background-color: var(--bg);
+  padding: 6rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.contenido {
+  max-width: 900px;
+}
+
+.boton-seccion {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  cursor: default;
+}
+
+.titulo {
+  font-family: var(--font-title);
+  margin: 0;
+}
+
+.titulo .principal {
+  font-size: 2rem;
+  color: var(--text-primary);
+  font-weight: var(--fw-bold);
+}
+
+.titulo .secundario {
+  font-size: 2rem;
+  color: var(--accent);
+  font-weight: var(--fw-semibold);
+}
+
+.descripcion {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-top: 1rem;
+}
+
+.metodologia {
+  margin-top: 2.5rem;
+}
+
+.subtitulo {
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: var(--fw-semibold);
+  margin-bottom: 1rem;
+}
+
+.lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista li {
+  margin-bottom: 1.2rem;
+}
+
+.lista .numeracion {
+  color: var(--accent);
+  font-weight: var(--fw-semibold);
+  font-family: var(--font-body);
+}
+
+.lista p {
+  margin: 0.3rem 0 0 0;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
