@@ -1,15 +1,17 @@
+/* === SECCIÓN DE SERVICIOS === */
 .servicios {
   background-color: var(--bg-alternative);
   display: flex;
+  flex-direction: column; 
   justify-content: center;
   align-items: center;
-  padding: 4rem 0; /* antes: 6rem 1rem */
-  height: 40rem;
+  padding: 4rem 1rem;
 }
 
 .contenido {
   text-align: center;
-  max-width: 800px;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .titulo-principal {
@@ -43,17 +45,73 @@
 /* === CONTENEDOR DE TARJETAS === */
 .cards-container {
   display: flex;
-  justify-content: center;   /* Centra horizontalmente */
-  align-items: flex-start;   /* Alinea arriba (si varía la altura) */
+  justify-content: center; 
+  align-items: flex-start;
   gap: 16px;
-  flex-wrap: wrap;
   margin-top: 3rem;
+  max-width: 1100px; /* Asegura un ancho suficiente para las 4 */
+  width: 100%;
+  padding: 0 1rem; 
 }
 
-/* Responsivo */
-@media (max-width: 900px) {
+/* === ESTILO DE TARJETA INDIVIDUAL (Clave) === */
+.card {
+  /* Calcula el ancho: (100% / 4) - ajuste para el gap. 
+     Esto garantiza que 4 elementos + 3 gaps de 16px quepan. */
+  flex: 0 1 calc(25% - 12px); 
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  max-height: 320px;
+}
+
+/* Responsivo: 2 tarjetas por fila en pantallas medianas */
+@media (max-width: 1150px) { 
+    .card {
+        flex: 0 1 calc(50% - 8px); 
+        margin-bottom: 16px;
+    }
+    .cards-container{
+          flex-wrap: wrap;
+    }
+}
+
+/* Responsivo: 1 tarjeta por fila en móviles */
+@media (max-width: 768px) { 
   .cards-container {
-    flex-direction: column;
-    align-items: center;
+    padding: 0 1rem;
+    gap: 16px;
   }
+  .card {
+    flex: 0 1 100%;
+    max-width: 400px;
+  }
+}
+
+/* === ESTILOS DE LISTA DENTRO DE LA TARJETA === */
+.card-items-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.card-items-list li {
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 15px;
+  font-size: 0.8rem;
+}
+
+/* Estilo para el punto/viñeta personalizado */
+.card-items-list li::before {
+  content: '•';
+  color: var(--accent-title);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  position: absolute;
+  left: 15px; 
 }

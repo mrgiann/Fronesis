@@ -70,3 +70,14 @@
 .card-button:hover {
   background-color: var(--cta-bg-hover);
 }
+
+.card {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -11,6 +11,7 @@
   --accent: #d19a64;       /* Dorado principal */
   --accent-light: #e5b275; /* Dorado claro */
   --accent-dark: #b38a60;  /* Dorado más oscuro */
+  --accent-title: #EAB780; /* Azul para títulos */
 
   /* === ACCIONES === */
   --cta-bg: #133e87;       /* Azul principal (botones) */
@@ -18,9 +19,9 @@
   --cta-text: #ffffff;
 
   /* === DECORATIVOS === */
-  --badge-bg: #f9f7f4;
-  --badge-border: #ddd;
-  --badge-text: #31527d;
+  --badge-bg: #FFFFFF;
+  --badge-border: #F1E3D6;
+  --badge-text: #59656e;
 
   /* === ESTADOS === */
   --success: #16a34a;

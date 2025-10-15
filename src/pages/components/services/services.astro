@@ -11,24 +11,51 @@ import ServicesCards from '../servicescards/servicescards.astro';
     
     <div class="cards-container">
       <ServicesCards 
-        title="Diseño Excepcional"
+        title="Diseño Web"
         category="Interfaz & Estilo"
-        description="Porque todo proyecto necesita una interfaz atractiva y moderna. Esto refleja profesionalismo y calidad visual."
+        description="Páginas web atractivas y profesionales que representan tu marca."
         image="/images/servicios/diseno.jpg"
+        items={[
+          "Diseño responsive",
+          "Diseño moderno",
+          "Fácil de usar"
+        ]}
       />
 
       <ServicesCards 
-        title="SEO Estratégico"
-        category="Posicionamiento Web"
-        description="Porque los clientes quieren que su web sea encontrada y genere tráfico. Esto vende resultados concretos y medibles."
-        image="/images/servicios/seo.jpg"
+        title="Sitios Responsive"
+        category="Adaptabilidad Web"
+        description="Tu sitio web se ve perfecto en todos los dispositivos y pantallas."
+        image="/images/servicios/responsive.jpg" 
+        items={[
+          "Mobile-friendly",
+          "Tablet optimizado",
+          "Desktop completo"
+        ]}
       />
-
+      
       <ServicesCards 
-        title="Performance Superior"
+        title="Carga Rápida"
         category="Optimización Técnica"
-        description="Porque la velocidad y el buen funcionamiento son clave para retener usuarios y mejorar la experiencia."
+        description="Sitios web optimizados para cargar rápido y mantener a tus visitantes."
         image="/images/servicios/performance.jpg"
+        items={[
+          "Optimización de imágenes",
+          "Código limpio",
+          "Hosting rápido"
+        ]}
+      />
+
+      <ServicesCards 
+        title="SEO Básico"
+        category="Posicionamiento Web"
+        description="Configuración SEO para que tu sitio sea encontrado en Google."
+        image="/images/servicios/seo.jpg"
+        items={[
+          "Meta tags",
+          "Estructura optimizada",
+          "URLs amigables"
+        ]}
       />
     </div>
   </div>

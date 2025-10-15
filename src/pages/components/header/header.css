@@ -56,6 +56,7 @@
   font-size: 0.75rem;
   background: var(--badge-bg);
   border: 1px solid var(--badge-border);
+  font-family: var(--font-body);
   border-radius: 9999px;
   padding: 0.4rem 1rem;
   margin-bottom: 1.5rem;
@@ -72,52 +73,94 @@
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 4.4rem;
   font-weight: 800;
   margin: 0;
 }
 
-h2 {
-  font-size: 2.8rem;
+.header h2 {
+  font-size: 4.2rem;
   font-weight: 700;
-  color: var(--accent-light);
-  margin-top: 0.2rem;
+  color: var(--accent-title);
   margin-bottom: 1.5rem;
+  margin-top: -1.3rem;
+  animation: darkPulse 4s ease-in-out infinite;
 }
 
-p {
-  font-size: 1.15rem;
+/* Animación de oscurecimiento con pausa final */
+@keyframes darkPulse {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(0.8);
+  }
+  75% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+
+
+
+.header p {
+  font-size: 1.4rem;
   max-width: 700px;
   line-height: 1.7;
   color: var(--text-secondary);
   margin-bottom: 1rem;
+  margin-top: -0.7rem;
 }
 
-.subtext {
+.header .subtext {
   color: var(--accent);
   font-weight: 500;
-  margin-top: 0.5rem;
+  margin-top: -0.7rem;
 }
 
 .divider {
-  width: 40px;
-  height: 2px;
-  background-color: var(--accent);
-  margin: 2rem auto;
   position: relative;
+  width: 200px;
+  height: 2px;
+  margin: 2rem auto;
 }
 
+.divider::before,
 .divider::after {
   content: "";
   position: absolute;
   top: 50%;
+  width: 40%;
+  height: 0.08rem;
+  transform: translateY(-50%);
+}
+
+.divider::before {
+  left: 0;
+  background: linear-gradient(to right, transparent, var(--accent-title), transparent);
+  margin-right: 20px; /* separación del círculo */
+}
+
+.divider::after {
+  right: 0;
+  background: linear-gradient(to left, transparent, var(--accent-title), transparent);
+  margin-left: 20px; /* separación del círculo */
+}
+
+.divider span {
+  position: absolute;
+  top: 50%;
   left: 50%;
-  width: 6px;
-  height: 6px;
-  background-color: var(--accent);
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-title);
   border-radius: 50%;
   transform: translate(-50%, -50%);
 }
+
 
 .buttons {
   display: flex;

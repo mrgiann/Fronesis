@@ -1,6 +1,7 @@
 ---
-const { title, category, description, buttonText, image } = Astro.props;
+const { title, category, description, image, items } = Astro.props;
 import "./servicescards.css";
+// Nota: buttonText se ha eliminado de la desestructuración ya que no se utiliza en el código.
 ---
 
 <div class="card">
@@ -9,5 +10,40 @@ import "./servicescards.css";
     <span class="card-category">{category}</span>
     <h3 class="card-title">{title}</h3>
     <p class="card-description">{description}</p>
+    
+    {/* Lista de elementos si la propiedad 'items' existe y tiene elementos */}
+    {items && items.length > 0 && (
+      <ul class="card-items-list">
+        {items.map((item: string) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    )}
+    
   </div>
 </div>
+<script type="module">
+  if (typeof window !== 'undefined') {
+    const cards = document.querySelectorAll('.card');
+
+    const toggleCardVisibility = () => {
+      const windowHeight = window.innerHeight;
+
+      cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+
+        if (cardTop < windowHeight * 0.85 && cardTop > 0) {
+          card.classList.add('show');
+        } else {
+          card.classList.remove('show');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', toggleCardVisibility);
+    window.addEventListener('resize', toggleCardVisibility);
+
+    // Para que se active al cargar la página
+    toggleCardVisibility();
+  }
+</script>
