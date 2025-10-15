@@ -1,4 +1,5 @@
-section {
+.header {
+  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,7 +17,40 @@ section {
   );
   color: var(--text-primary);
   font-family: "Georgia", serif;
+  overflow: hidden;
 }
+
+/* === PILARES === */
+.pillar {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100%;
+  opacity: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.pillar-left {
+  left: 2%;
+}
+
+.pillar-right {
+  right: 2%;
+}
+
+/* Ocultar pilares en pantallas pequeñas */
+@media (max-width: 768px) {
+  .pillar {
+    display: none;
+  }
+}
+
+
+
+
+/* === CONTENIDO === */
 
 .badge {
   font-size: 0.75rem;
@@ -113,13 +147,48 @@ p {
   background-color: var(--cta-bg-hover);
 }
 
+
 .btn-outline {
   background-color: transparent;
   border: 1px solid var(--cta-bg);
   color: var(--cta-bg);
 }
+.btn-outline {
+  position: relative;
+  background: transparent;
+  color: var(--cta-bg);
+  border: 1px solid var(--cta-bg);
+  padding: 12px 20px;
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 1;
+  display: inline-block;
+  transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Bloque inclinado que crece al hacer hover */
+.btn-outline::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  bottom: 0;
+  background: var(--cta-bg); /* fondo hover */
+  transform: skewX(-45deg) scale(0, 1);
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover::after {
+  transform: skewX(-45deg) scale(1, 1);
+  transition: all 0.3s ease-out;
+}
 
 .btn-outline:hover {
-  background-color: var(--cta-bg);
   color: var(--cta-text);
+  border-color: var(--cta-bg-hover);
 }
+
+
+

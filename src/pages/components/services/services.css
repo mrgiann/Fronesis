@@ -1,9 +1,10 @@
 .servicios {
-  background-color: var(--bg);
+  background-color: var(--bg-alternative);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 6rem 1rem;
+  padding: 4rem 0; /* antes: 6rem 1rem */
+  height: 40rem;
 }
 
 .contenido {

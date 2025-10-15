@@ -2,13 +2,14 @@
 import './header.css';
 ---
 
-<section>
+<section class="header" id="header">
+  <img src="/pillar.webp" alt="Pilar izquierdo" class="pillar pillar-left" />
+  <img src="/pillar.webp" alt="Pilar derecho" class="pillar pillar-right" />
+
   <div class="badge">Excelencia digital inspirada en el Olimpo</div>
   <h1>Sabiduría Digital</h1>
   <h2>del Olimpo</h2>
-  <p>
-    Transformamos tu visión empresarial en templos digitales de excelencia.
-  </p>
+  <p>Transformamos tu visión empresarial en templos digitales de excelencia.</p>
   <p class="subtext">Landing pages que trascienden el tiempo.</p>
   <div class="divider"></div>
 
@@ -17,3 +18,29 @@ import './header.css';
     <button class="btn btn-outline">Explorar Servicios</button>
   </div>
 </section>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const pillars = document.querySelectorAll('.pillar');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const fadePoint = window.innerHeight * 0.4; // desaparecen más rápido
+
+      pillars.forEach((pillar) => {
+        const el = pillar as HTMLElement;
+        const opacity = Math.max(0, 1 - scrollY / fadePoint);
+        const translateX = Math.min(scrollY / 5, 80); // se deslizan hacia afuera
+
+        if (el.classList.contains('pillar-left')) {
+          el.style.transform = `translate(-${translateX}px, -50%)`;
+        } else {
+          el.style.transform = `translate(${translateX}px, -50%)`;
+        }
+
+        el.style.opacity = opacity.toString();
+      });
+    });
+  }
+
+</script>
