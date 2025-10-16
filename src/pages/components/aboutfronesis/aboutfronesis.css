@@ -1,0 +1,146 @@
+.desarrollo-web {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  padding: 6rem 0;
+  font-family: var(--font-body);
+}
+
+.contenedor {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 4rem;
+  align-items: center;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  max-width: 1200px;
+}
+
+.columna-izquierda {
+  flex: 1;
+}
+
+.columna-derecha {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.boton-sobre {
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  color: var(--badge-text);
+  font-weight: var(--fw-medium);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.titulo {
+  font-family: var(--font-title);
+  font-size: 2.5rem;
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.titulo-acento {
+  color: var(--accent);
+}
+
+.descripcion {
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+.como-trabajamos h3 {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  font-weight: var(--fw-semibold);
+  margin-bottom: 0.8rem;
+}
+
+.como-trabajamos ol {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+  margin: 0;
+}
+
+.como-trabajamos li {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.como-trabajamos li strong {
+  color: var(--text-primary);
+}
+
+.columna-derecha .cardd {
+  background: var(--surface);
+  border: 1px solid var(--muted);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding-left: 25px;
+  padding-bottom: 1+5px;
+  width: 24rem;
+}
+
+.columna-derecha .cardd .icono {
+  font-size: 1.8rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.columna-derecha .cardd h4 {
+  font-family: var(--font-title);
+  font-weight: var(--fw-semibold);
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.columna-derecha .cardd p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.columna-derecha{
+    margin-top: 2rem;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .columna-izquierda{
+    width: 100%;
+  }
+
+  .contenedor {
+    flex-direction: column;
+    gap: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .columna-derecha {
+    width: 100%;
+  }
+  .columna-derecha .cardd {
+    width: 100%;
+  }
+
+  .descripcion{
+    max-width: none;
+  }
+}

@@ -12,9 +12,8 @@ import './header.css';
   <p>Creamos páginas web simples y efectivas para tu negocio.</p>
   <p class="subtext">Diseño profesional, entrega rápida.</p>
   <div class="divider">
-  <span></span>
-</div>
-
+    <span></span>
+  </div>
 
   <div class="buttons">
     <button class="btn btn-primary">Comenzar Proyecto →</button>
@@ -22,28 +21,58 @@ import './header.css';
   </div>
 </section>
 
-<script>
-  if (typeof window !== 'undefined') {
-    const pillars = document.querySelectorAll('.pillar');
+<script type="module">
+if (typeof window !== 'undefined') {
+  const pillars = document.querySelectorAll('.pillar');
+  const headerElements = document.querySelectorAll('.header > *:not(.pillar)');
+  let targetScroll = 0;
+  let currentScroll = 0;
 
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const fadePoint = window.innerHeight * 0.4; // desaparecen más rápido
+  window.addEventListener('wheel', (e) => {
+    targetScroll += e.deltaY;
+    targetScroll = Math.max(0, Math.min(targetScroll, window.innerHeight));
+  });
 
-      pillars.forEach((pillar) => {
-        const el = pillar as HTMLElement;
-        const opacity = Math.max(0, 1 - scrollY / fadePoint);
-        const translateX = Math.min(scrollY / 5, 80); // se deslizan hacia afuera
+  function animate() {
+    currentScroll += (targetScroll - currentScroll) * 0.1;
 
-        if (el.classList.contains('pillar-left')) {
-          el.style.transform = `translate(-${translateX}px, -50%)`;
-        } else {
-          el.style.transform = `translate(${translateX}px, -50%)`;
-        }
+    // Pilares: efecto lateral y opacidad rápida
+    const pillarFadePoint = window.innerHeight * 0.4;
+    pillars.forEach((pillar) => {
+      const opacity = Math.max(0, 1 - targetScroll / pillarFadePoint);
+      const translateX = Math.min(targetScroll / 5, 80);
 
-        el.style.opacity = opacity.toString();
-      });
+      if (pillar.classList.contains('pillar-left')) {
+        pillar.style.transform = `translate(-${translateX}px, -50%)`;
+      } else {
+        pillar.style.transform = `translate(${translateX}px, -50%)`;
+      }
+
+      pillar.style.opacity = opacity.toString();
     });
+
+    // Textos: movimiento hacia arriba y fade solo en tramo final
+    const moveFactor = 2; // velocidad del movimiento hacia arriba
+    const fadeStart = window.innerHeight * 0.15; // cuando empieza a desaparecer
+    const fadeEnd = window.innerHeight * 0.5;    // cuando desaparece completamente
+
+    headerElements.forEach((el) => {
+      // Movimiento hacia arriba progresivo
+      const translateY = Math.min(currentScroll / moveFactor, 100);
+      el.style.transform = `translateY(-${translateY}px)`;
+
+      // Fade solo en el tramo final, igual que pilares pero más tarde
+      let elementOpacity = 1;
+      if (currentScroll > fadeStart) {
+        elementOpacity = 1 - (currentScroll - fadeStart) / (fadeEnd - fadeStart);
+      }
+      elementOpacity = Math.max(0, Math.min(elementOpacity, 1));
+      el.style.opacity = elementOpacity.toString();
+    });
+
+    requestAnimationFrame(animate);
   }
 
+  animate();
+}
 </script>

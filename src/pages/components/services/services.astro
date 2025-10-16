@@ -5,8 +5,8 @@ import ServicesCards from '../servicescards/servicescards.astro';
 
 <section class="servicios">
   <div class="contenido">
-    <h2 class="titulo-principal">Servicios de <span class="resaltado">Excelencia Digital</span></h2>
-    <p class="subtitulo">Soluciones integrales inspiradas en la perfección del Olimpo</p>
+    <h2 class="titulo-principal">Servicios de <span class="resaltado">Desarrollo Web</span></h2>
+    <p class="subtitulo">Todo lo que necesitas para tu presencia online</p>
     <div class="punto"></div>
     
     <div class="cards-container">
@@ -60,3 +60,35 @@ import ServicesCards from '../servicescards/servicescards.astro';
     </div>
   </div>
 </section>
+<script type="module">
+if (typeof window !== 'undefined') {
+  // Seleccionamos solo los elementos del encabezado
+  const headerElements = document.querySelectorAll('.titulo-principal, .subtitulo, .punto');
+
+  function animateHeader() {
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+
+    headerElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      const elementTop = rect.top + scrollTop;
+
+      // Cuánto del elemento está visible
+      const visible = Math.min(Math.max(scrollTop + windowHeight - elementTop, 0), windowHeight);
+      const progress = visible / windowHeight;
+
+      // Movimiento desde abajo hacia arriba
+      const translateY = 50 * (1 - progress);
+      el.style.transform = "translateY(" + translateY + "px)";
+
+      // Opacidad progresiva que llega a 1 antes de estar completamente visible
+      const opacityFactor = 1.5;
+      el.style.opacity = Math.min(progress * opacityFactor, 1).toString();
+    });
+
+    requestAnimationFrame(animateHeader);
+  }
+
+  animateHeader();
+}
+</script>

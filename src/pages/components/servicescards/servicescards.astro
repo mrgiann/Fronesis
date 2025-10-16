@@ -1,7 +1,6 @@
 ---
 const { title, category, description, image, items } = Astro.props;
 import "./servicescards.css";
-// Nota: buttonText se ha eliminado de la desestructuración ya que no se utiliza en el código.
 ---
 
 <div class="card">
@@ -10,8 +9,7 @@ import "./servicescards.css";
     <span class="card-category">{category}</span>
     <h3 class="card-title">{title}</h3>
     <p class="card-description">{description}</p>
-    
-    {/* Lista de elementos si la propiedad 'items' existe y tiene elementos */}
+
     {items && items.length > 0 && (
       <ul class="card-items-list">
         {items.map((item: string) => (
@@ -22,28 +20,35 @@ import "./servicescards.css";
     
   </div>
 </div>
+
 <script type="module">
-  if (typeof window !== 'undefined') {
-    const cards = document.querySelectorAll('.card');
+if (typeof window !== 'undefined') {
+  const cards = document.querySelectorAll('.card');
 
-    const toggleCardVisibility = () => {
-      const windowHeight = window.innerHeight;
+  function animateCards() {
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
 
-      cards.forEach(card => {
-        const cardTop = card.getBoundingClientRect().top;
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const cardTop = rect.top + scrollTop;
 
-        if (cardTop < windowHeight * 0.85 && cardTop > 0) {
-          card.classList.add('show');
-        } else {
-          card.classList.remove('show');
-        }
-      });
-    };
+      // Calcular cuánto de la card está visible
+      const visible = Math.min(Math.max(scrollTop + windowHeight - cardTop, 0), windowHeight);
+      const progress = visible / windowHeight; // 0 = fuera, 1 = completamente visible
 
-    window.addEventListener('scroll', toggleCardVisibility);
-    window.addEventListener('resize', toggleCardVisibility);
+      // Movimiento desde abajo hacia arriba
+      const translateY = 50 * (1 - progress); // 50px abajo al entrar
+      card.style.transform = "translateY(" + translateY + "px)";
 
-    // Para que se active al cargar la página
-    toggleCardVisibility();
+      // Opacidad progresiva que llega a 1 antes
+      const opacityFactor = 1.8; // ajusta este valor para que aparezca antes
+      card.style.opacity = Math.min(progress * opacityFactor, 1).toString();
+    });
+
+    requestAnimationFrame(animateCards);
   }
+
+  animateCards();
+}
 </script>
