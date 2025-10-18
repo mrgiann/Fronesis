@@ -26,6 +26,13 @@
   color: var(--accent);
 }
 
+.titulo-principal {
+  margin: 0;        /* elimina margen superior e inferior */
+  line-height: 1;   /* evita espacio vertical adicional dentro del texto */
+  display: block;   /* asegura que cada h2 sea un bloque separado */
+}
+
+
 .subtitulo {
   font-family: var(--font-body);
   font-weight: var(--fw-regular);
